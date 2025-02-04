@@ -23,16 +23,38 @@ class NotesListScreenState extends State<NotesListScreen> {
         backgroundColor: Colors.blueAccent,
         title: Text("My Notes"),
       ),
-      body: ListView.builder(
-        itemCount: notes.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(notes[index]),
-            onTap: () {
-              // open edit Screen
-            },
-          );
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: ListView.builder(
+          itemCount: notes.length,
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 5,
+              margin: EdgeInsets.symmetric(vertical: 10),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: ListTile(
+                title: Text(
+                  notes[index],
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+                subtitle:
+                    Text("Tap To Edit", style: TextStyle(color: Colors.grey)),
+                leading: Icon(
+                  Icons.note,
+                  color: Colors.blueAccent,
+                ),
+                trailing: Icon(
+                  Icons.arrow_back_ios,
+                  size: 18,
+                ),
+                onTap: () {
+                  // open edit Screen
+                },
+              ),
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -40,7 +62,11 @@ class NotesListScreenState extends State<NotesListScreen> {
 
           Navigator.push(context, SlidePageRoute(page: AddEditNoteScreen()));
         },
-        child: Icon(Icons.add),
+        backgroundColor: Colors.blueAccent,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
