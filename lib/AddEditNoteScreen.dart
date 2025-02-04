@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 class AddEditNoteScreen extends StatefulWidget {
@@ -38,4 +40,20 @@ class _AddEditNoteScreenState extends State<AddEditNoteScreen> {
           child: Icon(Icons.save),
         ));
   }
+}
+
+// Scale animation
+
+class ScalePageRoute<T> extends PageRouteBuilder<T> {
+  final Widget page;
+  ScalePageRoute({required this.page})
+      : super(
+            pageBuilder: (context, animation, secondaryAnimation) => page,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return ScaleTransition(
+                scale: Tween<double>(begin: 0.0, end: 1.0).animate(animation),
+                child: child,
+              );
+            });
 }

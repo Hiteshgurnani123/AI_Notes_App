@@ -1,5 +1,5 @@
 import 'package:ai_notes/AddEditNoteScreen.dart';
-import 'package:ai_notes/loginScreen.dart';
+import 'package:ai_notes/LoginScreen.dart';
 import 'package:ai_notes/profileScreen.dart';
 import 'package:flutter/material.dart';
 import 'NotesListScreen.dart';
@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: profileScreen());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen());
   }
 }

@@ -38,3 +38,18 @@ class profileScreen extends StatelessWidget {
     );
   }
 }
+
+// Rotation Animation
+class RotationPageRoute<T> extends PageRouteBuilder<T> {
+  final Widget page;
+  RotationPageRoute({required this.page})
+      : super(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return RotationTransition(
+              turns: Tween<double>(begin: 0.0, end: 1.0).animate(animation),
+              child: child,
+            );
+          },
+        );
+}
